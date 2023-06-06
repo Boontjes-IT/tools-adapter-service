@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ToolsAdapter-xml2json_v1_0"
+   xmlns="http://ws.apache.org/ns/synapse" transports="http https" startOnLoad="true" trace="disable">
+   <target>
+      <inSequence>
+         <property name="HTTP_SC" scope="axis2" value="200"/>
+         <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+         <respond/>
+      </inSequence>
+      <outSequence/>
+      <faultSequence>
+         <log level="full"/>
+         <respond/>
+      </faultSequence>
+   </target>
+</proxy>

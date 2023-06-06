@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>nl.boontjesit.adapters.tools-adapter-service</groupId>
+    <artifactId>tools-adapter-service-parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>tools-adapter-service-car</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>carbon/application</packaging>
+  <name>tools-adapter-service CAR project</name>
+  <description>tools-adapter-service CAR Project containing CAR deployment artifact</description>
+  <properties>
+    <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <maven.car.deploy.skip>false</maven.car.deploy.skip>
+     <!-- proxy -->
+    <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>
+      <!-- xslt -->
+    <nl.boontjesit.adapters.tools-adapter-service.resource_._toolsdapter_beautifyxml_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._toolsdapter_beautifyxml_xslt_v1_0>
+
+  </properties>
+  <dependencies>
+  
+    <!-- proxy -->
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
+      <artifactId>ToolsAdapter-beautifyxml_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
+      <artifactId>ToolsAdapter-json2xml_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
+      <artifactId>ToolsAdapter-xml2json_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>xml</type>
+    </dependency>
+   
+    <!-- xslt -->
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.resource</groupId>
+      <artifactId>toolsdapter_beautifyxml_xslt_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <buildcommands />
+          <projectnatures>
+            <projectnature>org.wso2.developerstudio.eclipse.distribution.project.nature</projectnature>
+          </projectnatures>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-car-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.wso2.maven</groupId>
+        <artifactId>maven-car-deploy-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <profiles>
+    <profile>
+      <id>mock</id>
+      <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+          <plugin>
+            <groupId>org.wso2.maven</groupId>
+            <artifactId>maven-car-deploy-plugin</artifactId>
+            <version>${maven-car-deploy-plugin.version}</version>
+            <executions>
+              <execution>
+                <id>deployThisCar</id>
+                <phase>pre-integration-test</phase>
+                <goals>
+                  <goal>deploy-car</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>
