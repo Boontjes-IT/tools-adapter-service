@@ -3,11 +3,10 @@
    xmlns="http://ws.apache.org/ns/synapse" transports="http https" startOnLoad="true" trace="disable">
    <target>
       <inSequence>
-         <respond/>            
-            <xslt key="gov:nl/boontjesit/adapter/tools-adapter-service/v1_0/xslt/toolsdapter_beautifyxml_v1_0.xslt" />
-            <property name="HTTP_SC" scope="axis2" value="200"/>
-            <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
-            <respond/>
+         <xslt key="gov:nl/boontjesit/adapters/tools-adapter-service/v1_0/xslt/tools-adapter_xpath-tester_v1_0.xslt" />
+         <property name="HTTP_SC" scope="axis2" value="200"/>
+         <property name="messageType" scope="axis2" type="STRING" value="application/xml"/>
+         <respond/>
       </inSequence>
       <outSequence/>
       <faultSequence>

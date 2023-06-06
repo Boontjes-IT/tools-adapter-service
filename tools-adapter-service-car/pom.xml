@@ -16,16 +16,18 @@
   <properties>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
     <maven.car.deploy.skip>false</maven.car.deploy.skip>
-     <!-- proxy -->
+    <!-- api -->
+    <nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-xpathtester_v1_0>capp/EnterpriseServiceBus</nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-xpathtester_v1_0>
+    <!-- proxy -->
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>
-      <!-- xslt -->
-    <nl.boontjesit.adapters.tools-adapter-service.resource_._toolsdapter_beautifyxml_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._toolsdapter_beautifyxml_xslt_v1_0>
-
+    <!-- xslt -->
+    <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_beautify-xml_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_beautify-xml_xslt_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_xpath-tester_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_xpath-tester_xslt_v1_0>
   </properties>
   <dependencies>
-  
+
     <!-- proxy -->
     <dependency>
       <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
@@ -45,11 +47,23 @@
       <version>${project.version}</version>
       <type>xml</type>
     </dependency>
-   
+    <!-- api -->
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.api</groupId>
+      <artifactId>ToolsAdapter-xpathtester_v1_0</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
     <!-- xslt -->
     <dependency>
       <groupId>nl.boontjesit.adapters.tools-adapter-service.resource</groupId>
-      <artifactId>toolsdapter_beautifyxml_xslt_v1_0</artifactId>
+      <artifactId>tools-adapter_beautify-xml_xslt_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.resource</groupId>
+      <artifactId>tools-adapter_xpath-tester_xslt_v1_0</artifactId>
       <version>${project.version}</version>
       <type>zip</type>
     </dependency>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="ToolsAdapter-xpathtester_v1_0" context="/toolsadapter/xpathtester_v1_0">
+    <resource methods="POST">
+        <inSequence>
+            <property name="messageType" value="application/xml" scope="axis2"/>
+            <property name="FORCE_HTTP_CONTENT_TYPE" value="true" scope="axis2"/>
+            <log level="custom">
+                <property name="Test" expression="$url:xpath-string"/>
+            </log>
+            <xslt key="gov:nl/boontjesit/adapters/tools-adapter-service/v1_0/xslt/tools-adapter_xpath-tester_v1_0.xslt">
+                <property name="XPATH-STRING" expression="$url:xpath-string" />
+            </xslt>
+            <respond/>
+        </inSequence>
+        <outSequence>
+        </outSequence>
+        <faultSequence>
+            <!-- Return an error message if an exception occurs -->
+            <payloadFactory media-type="xml">
+                <format>
+                    <error>An error occurred while processing the request</error>
+                </format>
+                <args />
+            </payloadFactory>
+            <respond />
+        </faultSequence>
+    </resource>
+</api>
