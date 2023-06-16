@@ -9,6 +9,12 @@
   <artifact name="ToolsAdapter-beautifyxml_v1_0" groupId="nl.boontjesit.adapters.tools-adapter-service.proxy-service" serverRole="EnterpriseIntegrator" type="synapse/proxy-service" version="1.0.0-SNAPSHOT">
     <file>src/main/synapse-config/proxy-services/ToolsAdapter-beautifyxml_v1_0.xml</file>
   </artifact>
+  <artifact name="ToolsAdapter-convertcase_v1_0" groupId="nl.boontjesit.adapters.tools-adapter-service.proxy-service" serverRole="EnterpriseIntegrator" type="synapse/proxy-service" version="1.0.0-SNAPSHOT">
+    <file>src/main/synapse-config/proxy-services/ToolsAdapter-convertcase_v1_0.xml</file>
+  </artifact>
+  <artifact name="ToolsAdapter-genfilename_v1_0" groupId="nl.boontjesit.adapters.tools-adapter-service.proxy-service" serverRole="EnterpriseIntegrator" type="synapse/proxy-service" version="1.0.0-SNAPSHOT">
+    <file>src/main/synapse-config/proxy-services/ToolsAdapter-genfilename_v1_0.xml</file>
+  </artifact>
   <!-- api -->
   <artifact name="ToolsAdapter-xpathtester_v1_0" groupId="nl.fdmg.wso2admin-adapter.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
     <file>src/main/synapse-config/api/ToolsAdapter-xpathtester_v1_0.xml</file>

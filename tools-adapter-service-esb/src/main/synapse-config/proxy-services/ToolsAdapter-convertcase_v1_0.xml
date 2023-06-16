@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="ToolsAdapter-convertcase_v1_0"
+   xmlns="http://ws.apache.org/ns/synapse" transports="http https" startOnLoad="true" trace="disable">
+   <target>
+      <inSequence>
+         <xslt key="gov:nl/boontjesit/adapters/tools-adapter-service/v1_0/xslt/tools-adapter_convertcase_v1_0.xslt" />
+         <property name="HTTP_SC" scope="axis2" value="200"/>
+         <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+         <respond/>
+      </inSequence>
+      <outSequence/>
+      <faultSequence>
+         <log level="full"/>
+         <respond/>
+      </faultSequence>
+   </target>
+</proxy>

@@ -22,9 +22,14 @@
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-xml2json_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-convertcase_v1_0 >capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-convertcase_v1_0 >
+    <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-genfilename_v1_0 >capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-genfilename_v1_0 >
     <!-- xslt -->
     <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_beautify-xml_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_beautify-xml_xslt_v1_0>
-    <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_xpath-tester_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_xpath-tester_xslt_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_convertcase_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_convertcase_xslt_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_genfilename_xslt_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.resource_._tools-adapter_genfilename_xslt_v1_0>
+
+
   </properties>
   <dependencies>
 
@@ -47,6 +52,18 @@
       <version>${project.version}</version>
       <type>xml</type>
     </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
+      <artifactId>ToolsAdapter-convertcase_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.proxy-service</groupId>
+      <artifactId>ToolsAdapter-genfilename_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>xml</type>
+    </dependency>
     <!-- api -->
     <dependency>
       <groupId>nl.boontjesit.adapters.tools-adapter-service.api</groupId>
@@ -63,7 +80,13 @@
     </dependency>
     <dependency>
       <groupId>nl.boontjesit.adapters.tools-adapter-service.resource</groupId>
-      <artifactId>tools-adapter_xpath-tester_xslt_v1_0</artifactId>
+      <artifactId>tools-adapter_convertcase_xslt_v1_0</artifactId>
+      <version>${project.version}</version>
+      <type>zip</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.resource</groupId>
+      <artifactId>tools-adapter_genfilename_xslt_v1_0</artifactId>
       <version>${project.version}</version>
       <type>zip</type>
     </dependency>

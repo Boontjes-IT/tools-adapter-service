@@ -16,6 +16,16 @@ The `ToolsAdapter-xml2json_v1_0` proxy facilitates the conversion of an XML mess
 
 ## ToolsAdapter-xpathtester_v1_0
 The `ToolsAdapter-xpathtester_v1_0` proxy is a handy tool for testing XPath expressions on XML messages. By making API calls to this proxy, you can evaluate and validate XPath queries against XML content, helping you extract specific data from XML messages and verify their correctness.
+
+## ToolsAdapter-genfilename_v1_0
+
+The `ToolsAdapter-genfilename_v1_0` proxy is a function that generates a special filename with version and correct format. It can be used to apply naming format so it will always be the same.
+
+## ToolsAdapter-convertcase_v1_0
+
+The `ToolsAdapter-convertcase_v1_0` proxy provides various case conversion functionalities, including converting to lowercase, uppercase, camel case, pascal case, snake case, title case, and alternating case. It allows you to transform the case of string in one call to all diferrent formats.
+
+
 ## Usage Instructions
 
 To utilize the Boontjes-IT Tools Adapter Service, follow these steps:

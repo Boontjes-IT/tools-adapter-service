@@ -7,9 +7,16 @@
             <mediaType>application/xslt+xml</mediaType>
         </item>
     </artifact>
-    <artifact groupId="nl.boontjesit.adapters.tools-adapter-service.resource" name="tools-adapter_xpath-tester_xslt_v1_0" serverRole="EnterpriseIntegrator" type="registry/resource" version="1.0.0-SNAPSHOT">
+    <artifact groupId="nl.boontjesit.adapters.tools-adapter-service.resource" name="tools-adapter_convertcase_xslt_v1_0" serverRole="EnterpriseIntegrator" type="registry/resource" version="1.0.0-SNAPSHOT">
         <item>
-            <file>xslt/tools-adapter_xpath-tester_v1_0.xslt</file>
+            <file>xslt/tools-adapter_convertcase_v1_0.xslt</file>
+            <path>/_system/governance/nl/boontjesit/adapters/tools-adapter-service/v1_0/xslt</path>
+            <mediaType>application/xslt+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact groupId="nl.boontjesit.adapters.tools-adapter-service.resource" name="tools-adapter_genfilename_xslt_v1_0" serverRole="EnterpriseIntegrator" type="registry/resource" version="1.0.0-SNAPSHOT">
+        <item>
+            <file>xslt/tools-adapter_genfilename_v1_0.xslt</file>
             <path>/_system/governance/nl/boontjesit/adapters/tools-adapter-service/v1_0/xslt</path>
             <mediaType>application/xslt+xml</mediaType>
         </item>
