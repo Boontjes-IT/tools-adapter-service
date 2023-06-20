@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsonObject>
+    <input>Informatie object</input>
+    <interactieFormaat>Informatie object</interactieFormaat>
+    <canoniekFormaat>asset</canoniekFormaat>
+    <version>v1_1</version>
+</jsonObject>
