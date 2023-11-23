@@ -19,4 +19,7 @@
   <artifact name="ToolsAdapter-xpathtester_v1_0" groupId="nl.fdmg.wso2admin-adapter.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
     <file>src/main/synapse-config/api/ToolsAdapter-xpathtester_v1_0.xml</file>
   </artifact>
+  <artifact name="ToolsAdapter-datescript_v1_0" groupId="nl.fdmg.wso2admin-adapter.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+    <file>src/main/synapse-config/api/ToolsAdapter-datescript_v1_0.xml</file>
+  </artifact>
 </artifacts>

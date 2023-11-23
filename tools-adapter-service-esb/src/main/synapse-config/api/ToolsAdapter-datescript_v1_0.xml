@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="ToolsAdapter-datescript_v1_0" context="/toolsadapter/studytubetest">
+    <resource methods="POST">
+        <inSequence>
+            <property name="messageType" value="application/xml" scope="axis2"/>
+            <log level="custom">
+                <property name="MARVIN1" value="start inseq"/>
+                <property name="body" expression="$body"/>
+            </log>
+            <property name="ROOT" scope="default">
+                <root xmlns="">
+                    <item></item>
+                </root>
+            </property>
+
+            <foreach2 expression="//jsonArray/jsonElement">
+                <sequence>
+                    <log level="custom">
+                        <property name="MARVIN2" value="start foreach"/>
+                    </log>
+                    <property name="trainingAanvragenStatusUpdatedAtDateTime" expression="//jsonElement/status_updated_at[1]" scope="default" type="STRING" />
+                    <property name="lastsuccesfulrun_tijdstip" expression="get-property('transport', 'JMS_TIJDSTIP')" type="STRING" />
+                    <property name="trainingAanvragenId" expression="//jsonElement/id[1]" scope="default" type="STRING" />
+                    <property name="trainingAanvragenStatus" expression="//jsonElement/status[1]" scope="default" type="STRING" />
+
+                    <log level="custom">
+                        <property name="MARVIN3" value="parameters gezet"/>
+                        <property name="trainingAanvragenStatusUpdatedAtDateTime" expression="$ctx:trainingAanvragenStatusUpdatedAtDateTime"/>
+                        <property name="lastsuccesfulrun_tijdstip" expression="$ctx:lastsuccesfulrun_tijdstip"/>
+                        <property name="trainingAanvragenId" expression="$ctx:trainingAanvragenId"/>
+                        <property name="trainingAanvragenStatus" expression="$ctx:trainingAanvragenStatus"/>
+                    </log>
+                    <filter xpath="$ctx:trainingAanvragenStatus = 'confirmed'">
+                        <then>
+                            <call-template target="logger_v3_0">
+                                <with-param name="ConditieNaam" value="Bepaal of het trainings aanvraag status gelijk is aan confirmed."/>
+                                <with-param name="ConditieInvoerWaarde" value="{$ctx:trainingAanvragenStatus = 'confirmed'}"/>
+                                <with-param name="ConditieBeslissing" value="trainingAanvragenStatus is confirmed en wordt verwerkt."/>
+                            </call-template>
+                            <filter xpath="$ctx:trainingAanvragenStatusUpdatedAtDateTime  > $ctx:lastsuccesfulrun_tijdstip">
+                                <then>
+                                    <log level="custom">
+                                        <property name="MARVIN4" value="filter run"/>
+                                        <property name="filteruitkomst" value="true"/>
+                                    </log>
+                                    <property name="geschiktheidFlag" value="true" scope="default" type="STRING" />
+                                    <call-template target="logger_v3_0">
+                                        <with-param name="ConditieNaam" value="Bepaal of het trainings aangepast na last succesful run."/>
+                                        <with-param name="ConditieInvoerWaarde" value="{$ctx:trainingAanvragenStatusUpdatedAtDateTime  > $ctx:lastsuccesfulrun_tijdstip}"/>
+                                        <with-param name="ConditieBeslissing" value="trainingAanvragen is nieuwer dan lastsuccesfulrun_tijdstip"/>
+                                    </call-template>
+                                </then>
+                                <otherwise>
+                                    <log level="custom">
+                                        <property name="MARVIN5" value="filter run"/>
+                                        <property name="filteruitkomst" value="false"/>
+                                    </log>
+                                    <property name="geschiktheidFlag" value="false" scope="default" type="STRING" />
+                                    <call-template target="logger_v3_0">
+                                        <with-param name="ConditieNaam" value="Bepaal of het trainings aangepast na last succesful run."/>
+                                        <with-param name="ConditieInvoerWaarde" value="{$ctx:trainingAanvragenStatusUpdatedAtDateTime  > $ctx:lastsuccesfulrun_tijdstip}"/>
+                                        <with-param name="ConditieBeslissing" value="trainingAanvragen is ouder dan lastsuccesfulrun_tijdstip"/>
+                                    </call-template>
+                                </otherwise>
+                            </filter>
+                            <!-- item -->
+                            <payloadFactory media-type="xml">
+                                <format>
+                                    <item>
+                                        <trainingAanvragenId>$1</trainingAanvragenId>
+                                        <trainingAanvragenStatus>$2</trainingAanvragenStatus>
+                                        <trainingAanvragenStatusUpdatedAtDateTime>$3</trainingAanvragenStatusUpdatedAtDateTime>
+                                        <lastsuccesfulrun_tijdstip>$4</lastsuccesfulrun_tijdstip>
+                                        <financieleverplichtingen>$5</financieleverplichtingen>
+                                    </item>
+                                </format>
+                                <args>
+                                    <arg evaluator="xml" expression="$ctx:trainingAanvragenId"/>
+                                    <arg evaluator="xml" expression="$ctx:trainingAanvragenStatus"/>
+                                    <arg evaluator="xml" expression="$ctx:trainingAanvragenStatusUpdatedAtDateTime"/>
+                                    <arg evaluator="xml" expression="$ctx:lastsuccesfulrun_tijdstip"/>
+                                    <arg evaluator="xml" expression="$ctx:geschiktheidFlag"/>
+                                </args>
+                            </payloadFactory>
+                            <log level="custom">
+                                <property name="MARVIN6" value="after payload "/>
+                                <property name="body" expression="$body"/>
+                            </log>
+                            <!--Save result-->
+                            <enrich>
+                                <source clone="true" type="body"/>
+                                <target property="ITEM_PROPERTY" type="property"/>
+                            </enrich>
+                            <!--set ROOT as body-->
+                            <enrich>
+                                <source type="property" property="ROOT"/>
+                                <target type="body"/>
+                            </enrich>
+                            <log level="custom">
+                                <property name="MARVIN7" value="root as body  "/>
+                                <property name="body" expression="$body"/>
+                            </log>
+                            <!--add result-->
+                            <enrich>
+                                <source clone="true" property="ITEM_PROPERTY" type="property"/>
+                                <target action="child" xpath="//root/item"/>
+                            </enrich>
+                            <log level="custom">
+                                <property name="MARVIN8" value="add result to body "/>
+                                <property name="body" expression="$body"/>
+                            </log>
+                            <!--resave root -->
+                            <enrich>
+                                <source clone="true" type="body"/>
+                                <target property="ROOT" type="property"/>
+                            </enrich>
+                            <log level="custom">
+                                <property name="MARVIN8" value="resave ROOT"/>
+                                <property name="body" expression="$body"/>
+                            </log>
+                        </then>
+                        <otherwise>
+                            <call-template target="logger_v3_0">
+                                <with-param name="ConditieNaam" value="Bepaal of het trainings aanvraag status gelijk is aan confirmed."/>
+                                <with-param name="ConditieInvoerWaarde" value="{$ctx:trainingAanvragenStatus = 'confirmed'}"/>
+                                <with-param name="ConditieBeslissing" value="trainingAanvragenStatus is niet confirmed en wordt niet verwerkt."/>
+                            </call-template>
+                        </otherwise>
+                    </filter>
+                </sequence>
+            </foreach2>
+
+            <respond/>
+        </inSequence>
+        <outSequence>
+        </outSequence>
+        <faultSequence>
+            <!-- Return an error message if an exception occurs -->
+            <payloadFactory media-type="xml">
+                <format>
+                    <error>An error occurred while processing the request</error>
+                </format>
+                <args />
+            </payloadFactory>
+            <respond />
+        </faultSequence>
+    </resource>
+</api>

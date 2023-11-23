@@ -18,6 +18,7 @@
     <maven.car.deploy.skip>false</maven.car.deploy.skip>
     <!-- api -->
     <nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-xpathtester_v1_0>capp/EnterpriseServiceBus</nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-xpathtester_v1_0>
+    <nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-datescript_v1_0>capp/EnterpriseServiceBus</nl.boontjesit.adapters.tools-adapter-service.api_._ToolsAdapter-datescript_v1_0>
     <!-- proxy -->
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-beautifyxml_v1_0>
     <nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>capp/EnterpriseIntegrator</nl.boontjesit.adapters.tools-adapter-service.proxy-service_._ToolsAdapter-json2xml_v1_0>
@@ -68,6 +69,12 @@
     <dependency>
       <groupId>nl.boontjesit.adapters.tools-adapter-service.api</groupId>
       <artifactId>ToolsAdapter-xpathtester_v1_0</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>nl.boontjesit.adapters.tools-adapter-service.api</groupId>
+      <artifactId>ToolsAdapter-datescript_v1_0</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
