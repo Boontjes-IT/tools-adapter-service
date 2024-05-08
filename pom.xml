@@ -13,9 +13,9 @@
     <name>tools-adapter-service parent project</name>
     <description>tools-adapter-service parent projectpackage</description>
     <scm>
-        <connection>scm:git:https://bitbucket.org/yenlo/tools-adapter-service.git</connection>
-        <developerConnection>scm:git:https://bitbucket.org/yenlo/tools-adapter-service.git</developerConnection>
-        <url>https://bitbucket.org/yenlo/tools-adapter-service.git</url>
+        <connection>scm:git:https://github.com/Boontjes-IT/tools-adapter-service.git</connection>
+        <developerConnection>scm:git:https://github.com/Boontjes-IT/tools-adapter-service.git</developerConnection>
+        <url>https://github.com/Boontjes-IT/tools-adapter-service.git</url>
     </scm>
     <properties>
         <jgitflow-maven-plugin.version>1.1-yenlo-m6</jgitflow-maven-plugin.version>
